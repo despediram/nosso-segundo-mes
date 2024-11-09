@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motivos pelos quais amo você, Julia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos básicos */
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #6a0dad, #8e44ad);
+            color: #fff;
+            font-family: 'Quicksand', sans-serif;
+            margin: 0;
+            overflow: hidden; /* Para evitar a rolagem quando os corações aparecerem */
+            padding: 0 15px; /* Para dar um espaço nas laterais */
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #e6e6fa;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 2s ease;
+            text-align: center; /* Para centralizar o título */
+        }
+
+        /* Botão estilizado */
+        button {
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff;
+            background-color: #9b59b6;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            font-family: 'Quicksand', sans-serif;
+            width: 80%; /* Largura responsiva */
+            max-width: 350px; /* Tamanho máximo para o botão */
+        }
+
+        button:hover {
+            background-color: #b785cc;
+            transform: scale(1.05);
+        }
+
+        /* Caixa de mensagem com estilo */
+        #mensagem {
+            margin-top: 30px;
+            font-size: 20px;
+            text-align: center;
+            max-width: 600px;
+            padding: 15px;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1s ease;
+            color: #f0e6ff;
+            font-family: 'Quicksand', sans-serif;
+            width: 90%; /* Largura responsiva */
+        }
+
+        /* Estilo e animação dos corações */
+        .heart {
+            position: absolute;
+            color: #e6a0f5;
+            font-size: 20px;
+            animation: floatUp 1.5s ease forwards;
+            opacity: 0.8;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-100px);
+                opacity: 0;
+            }
+        }
+
+        /* Animação de fade-in */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Estilo do botão Play */
+        .play-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            font-size: 20px;
+            background: #8e44ad;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: background 0.3s ease;
+        }
+
+        .play-button:hover {
+            background: #9b59b6;
+        }
+
+        /* Media queries para telas pequenas */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.5em;
+            }
+
+            button {
+                font-size: 14px;
+                padding: 10px 20px;
+            }
+
+            #mensagem {
+                font-size: 18px;
+            }
+
+            .play-button {
+                top: 10px;
+                right: 10px;
+                width: 40px;
+                height: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Motivos pelo qual eu amo você minha princesa</h1>
+    <button onclick="gerarMensagem()">Clique para ver um motivo 💜</button>
+    <div id="mensagem"></div>
+
+    <!-- Botão Play -->
+    <button class="play-button" onclick="toggleMusic()">▶️</button>
+
+    <!-- Arquivo de áudio com a música "All of Me" -->
+    <audio id="audio" src="all_of_me.mp3"></audio>
+
+    <script>
+        // Lista de motivos pelos quais você ama a Julia
+        const motivos = [
+    "Amo o seu sorriso que ilumina meu dia.", 
+    "Amo o jeito como você sempre me entende.",
+    "Amo sua forma de ver o mundo com otimismo.",
+    "Amo como você me faz sentir amado e especial.",
+    "Amo o seu apoio incondicional em tudo que faço.",
+    "Amo como você me faz rir nos momentos difíceis.",
+    "Amo a nossa conexão única e profunda.",
+    "Amo a forma como você transforma momentos simples em especiais.",
+    "Amo como você sempre escuta o que eu tenho a dizer.",
+    "Amo a sua generosidade e o coração bondoso.",
+    "Amo como você é forte e determinada.",
+    "Amo a sua inteligência e sua curiosidade pelo mundo.",
+    "Amo os seus pequenos gestos que mostram o quanto você se importa.",
+    "Amo como você me motiva a ser uma pessoa melhor.",
+    "Amo o seu jeito único de ser.",
+    "Amo como você ilumina o ambiente onde está.",
+    "Amo sua espontaneidade e como você torna a vida leve.",
+    "Amo a maneira como me acolhe e me entende.",
+    "Amo o seu senso de humor contagiante.",
+    "Amo como você está sempre pronta para novas aventuras.",
+    "Amo a sua gentileza com os outros.",
+    "Amo como você transforma momentos simples em inesquecíveis.",
+    "Amo a confiança que você deposita em mim.",
+    "Amo como você me faz sentir em paz.",
+    "Amo a nossa sintonia, mesmo à distância.",
+    "Amo o jeito como você lida com desafios.",
+    "Amo a sua coragem e determinação.",
+    "Amo a sua sensibilidade e empatia.",
+    "Amo como nossos corações se conectam.",
+    "Amo o brilho dos seus olhos quando está feliz.",
+    "Amo como você me inspira a sonhar.",
+    "Amo os nossos planos para o futuro.",
+    "Amo como me sinto completo ao seu lado.",
+    "Amo a força que você me dá todos os dias.",
+    "Amo como você cuida de mim e dos outros.",
+    "Amo como você torna tudo mais bonito.",
+    "Amo os momentos que passamos juntos, mesmo que à distância.",
+    "Amo como você respeita meus sentimentos e pensamentos.",
+    "Amo como você valoriza cada detalhe da vida.",
+    "Amo como você é autêntica e verdadeira.",
+    "Amo seu jeito especial de ver o mundo.",
+    "Amo como você é a melhor parte dos meus dias.",
+    "Amo como cada conversa com você me enche de alegria.",
+    "Amo a maneira como você acredita em mim.",
+    "Amo como você me faz sentir em casa.",
+    "Amo a nossa história e tudo o que vivemos juntos.",
+    "Amo os planos e sonhos que criamos juntos.",
+    "Amo como você me completa e me faz feliz.",
+    "Amo a sua dedicação em tudo o que faz.",
+    "Amo como você sempre se preocupa comigo.",
+    "Amo como você é leal e verdadeira.",
+    "Amo como você me aceita com todos os meus defeitos.",
+    "Amo o seu entusiasmo por coisas pequenas.",
+    "Amo como você cuida de quem ama.",
+    "Amo como você me desafia a ser melhor.",
+    "Amo como você traz paz para minha vida.",
+    "Amo sua sabedoria e seu jeito de pensar.",
+    "Amo como você sempre tem algo bom a dizer.",
+    "Amo o fato de que posso ser eu mesmo com você.",
+    "Amo como você valoriza nossos momentos.",
+    "Amo seu senso de humor único.",
+    "Amo sua curiosidade e vontade de aprender.",
+    "Amo a forma como você me inspira.",
+    "Amo como me sinto especial ao seu lado.",
+    "Amo sua paciência e compreensão.",
+    "Amo como você se esforça para me fazer feliz.",
+    "Amo como você traz alegria para minha vida.",
+    "Amo como você valoriza os pequenos gestos.",
+    "Amo sua sensibilidade e seu carinho.",
+    "Amo como você cuida de mim e me apoia.",
+    "Amo a sua força e determinação.",
+    "Amo como você me faz sorrir.",
+    "Amo como você está sempre comigo.",
+    "Amo a paz que você traz ao meu coração.",
+    "Amo como você me entende sem eu precisar dizer nada.",
+    "Amo a sua energia e vontade de viver.",
+    "Amo como você se preocupa comigo.",
+    "Amo a sua dedicação em tudo o que faz.",
+    "Amo a forma como você me inspira a ser melhor.",
+    "Amo como você me faz sentir especial.",
+    "Amo o seu jeito único de ver a vida.",
+    "Amo como você torna os dias mais coloridos.",
+    "Amo sua presença na minha vida.",
+    "Amo a forma como você torna tudo mais leve.",
+    "Amo como você me faz acreditar no amor.",
+    "Amo como você está sempre ao meu lado.",
+    "Amo como você me incentiva.",
+    "Amo como você é sempre tão atenciosa.",
+    "Amo como você é forte e carinhosa ao mesmo tempo.",
+    "Amo como você me faz querer ser uma pessoa melhor.",
+    "Amo sua doçura e bondade.",
+    "Amo como você transforma qualquer momento em algo especial.",
+    "Amo como você se importa com os detalhes.",
+    "Amo como você me faz sentir em casa.",
+    "Amo a paz que você traz à minha vida.",
+    "Amo como você me inspira a sonhar.",
+    "Amo como você é verdadeira e autêntica.",
+    "Amo como você traz esperança para minha vida.",
+    "Amo como você me faz acreditar em um futuro juntos.",
+    "Amo a nossa conexão que vai além das palavras.",
+    "Amo como você ilumina a minha vida.",
+    "Amo como você me faz sentir seguro.",
+    "Amo como você me enche de alegria.",
+    "Amo como você me faz sentir especial e único.",
+    "Amo como você está sempre pronta para me apoiar.",
+    "Amo como você me faz acreditar em mim mesmo."
+        ];
+
+        // Função para gerar uma mensagem aleatória
+        function gerarMensagem() {
+            const motivoAleatorio = motivos[Math.floor(Math.random() * motivos.length)];
+            document.getElementById('mensagem').innerText = motivoAleatorio;
+            gerarCoracoes(); // Gerar corações também
+        }
+
+        // Função para gerar corações flutuantes em posições aleatórias
+        function gerarCoracoes() {
+            const numeroDeCorações = 10; // Número de corações a serem gerados
+            for (let i = 0; i < numeroDeCorações; i++) {
+                const coracao = document.createElement("div");
+                coracao.classList.add("heart");
+                coracao.innerText = "💜";
+                coracao.style.left = Math.random() * 100 + "vw"; // Posição aleatória na largura
+                coracao.style.top = Math.random() * 100 + "vh";  // Posição aleatória na altura
+                document.body.appendChild(coracao);
+                setTimeout(() => coracao.remove(), 1500); // Remove o coração após 1.5s
+            }
+        }
+
+        // Função para alternar a música
+        function toggleMusic() {
+            const audio = document.getElementById("audio");
+            if (audio.paused) {
+                audio.play();
+            } else {
+                audio.pause();
+            }
+        }
+    </script>
+</body>
+</html>
