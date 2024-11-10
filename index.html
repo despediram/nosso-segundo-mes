@@ -72,7 +72,6 @@
             scrollbar-color: #9b59b6 #e6e6fa;
         }
 
-        /* Estilo para o texto rolável */
         .scroll-text::-webkit-scrollbar {
             width: 8px;
         }
@@ -115,32 +114,108 @@
                 margin-top: 15px;
             }
         }
+
+        iframe {
+            width: 100%;
+            height: 80vh;
+            border: none;
+            margin-top: 20px;
+            display: none; /* Inicialmente escondido */
+        }
+
+        #conteudoPrincipal {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            width: 100%;
+        }
+
+        /* Estilo do botão de voltar */
+        #voltarButton {
+            background-color: #9b59b6;
+            margin-top: 20px;
+        }
+
+        #voltarButton:hover {
+            background-color: #e6e6fa;
+        }
     </style>
 </head>
 <body>
-    <h1>Mensagem especial para você, Meu amor!</h1>
+    <div id="conteudoPrincipal">
+        <h1>Mensagem Especial para Você, Meu amor!</h1>
 
-    <!-- Player de música -->
-    <audio id="musicPlayer" preload="auto">
-        <source src="all_of_me.mp3" type="audio/mp3">
-        Seu navegador não suporta áudio.
-    </audio>
-    <button class="audio-button" onclick="document.getElementById('musicPlayer').play()">Play Música</button>
+        <!-- Player de música -->
+        <audio id="musicPlayer" preload="auto" loop>
+            <source src="all_of_me.mp3" type="audio/mp3">
+            Seu navegador não suporta áudio.
+        </audio>
+        <button class="audio-button" onclick="toggleMusic()">▶ Play Música</button>
 
-    <div class="scroll-text">
-        <p>Hoje celebramos dois meses de uma jornada que, apesar de ser curta, tem sido a mais transformadora e especial da minha vida. Eu não consigo expressar em palavras o quanto esses dias ao seu lado, mesmo que à distância, foram capazes de preencher meu coração com um amor imenso e verdadeiro.</p>
-        <p>Cada mensagem que trocamos, cada risada que compartilhamos, cada momento que dividimos em pensamento, me faz ter a certeza de que o destino nos uniu de maneira única. Mesmo sem toques físicos, a conexão que temos transcende qualquer barreira, e a nossa alma, eu tenho a sensação de que se conhece desde sempre.</p>
-        <p>Quando olho para tudo o que já vivemos juntos, meu peito se enche de gratidão. Gratidão por cada palavra que você me disse, por cada gesto de carinho, por cada vez que me fez sentir importante, mesmo quando estávamos separados por quilômetros. A distância, longe de nos separar, apenas fortaleceu o que sentimos um pelo outro. Eu aprendi a valorizar cada segundo, cada detalhe, cada risada, cada "oi" e até os silêncios que compartilhamos. Eu aprendi que o amor verdadeiro não se mede pela proximidade física, mas pela força com que ele pulsa dentro da gente, todos os dias.</p>
-		<p>Eu amo o fato de que, mesmo com todas as adversidades da vida, você sempre encontra a maneira de ser luz para mim. Amo como você me faz sentir especial, como você me ajuda a ser melhor a cada dia, mesmo de longe. Você me faz acreditar em um futuro ao seu lado, me faz ter esperanças nos dias que virão, mesmo sabendo que não podemos planejar nada com certeza. Porque, com você, o simples fato de esperar já se torna algo mágico.</p>
-		<p>Cada vez que penso em nós, a minha felicidade cresce mais. E é difícil acreditar que algo tão perfeito possa existir, mas você me mostrou que sim, que o amor verdadeiro é real, e ele é mais forte do que tudo. Eu não sei como explicar o tamanho da minha gratidão por ter encontrado alguém como você. Você me transforma, me dá forças, me faz ver a vida de uma forma mais bonita e cheia de significado.</p>
-		<p>A minha vida era basica antes de te conhecer, mas agora é como se ela tivesse se tornado mais colorida, mais viva, mais cheia de sonhos. Sonhos que, agora, compartilho com você. Eu vejo você em tudo ao meu redor, no brilho das estrelas, no calor do sol, no sorriso de um estranho. E cada um desses momentos me lembra o quanto sou abençoado por ter você na minha vida.</p>
-		<p>Julia, você é mais do que eu jamais sonhei. Eu te amo com cada pedaço do meu ser, mais do que você pode imaginar. E se esses dois meses foram incríveis, eu não consigo nem sonhar como serão os próximos anos, porque sei que, ao seu lado, tudo será perfeito, não importa aonde a vida nos leve.</p>
-		<p>Eu te amo profundamente, e com você, todos os meus dias ganham um significado único.</p>
-		<p>Obrigado por ser minha.</p>
-		<p>E não se esqueça de clicar logo aqui embaixo para ir para o proximo nivel, fiz uma lista com mais de 100 motivos para te amar! espero que goste meu amor.</p>
+        <div class="scroll-text">
+            <p>Hoje celebramos dois meses de uma jornada que, apesar de ser curta, tem sido a mais transformadora e especial da minha vida. Eu não consigo expressar em palavras o quanto esses dias ao seu lado, mesmo que à distância, foram capazes de preencher meu coração com um amor imenso e verdadeiro.</p>
+            <p>Cada mensagem que trocamos, cada risada que compartilhamos, cada momento que dividimos em pensamento, me faz ter a certeza de que o destino nos uniu de maneira única. Mesmo sem toques físicos, a conexão que temos transcende qualquer barreira, e a nossa alma, eu tenho a sensação de que se conhece desde sempre.</p>
+            <p>Quando olho para tudo o que já vivemos juntos, meu peito se enche de gratidão. Gratidão por cada palavra que você me disse, por cada gesto de carinho, por cada vez que me fez sentir importante, mesmo quando estávamos separados por quilômetros. A distância, longe de nos separar, apenas fortaleceu o que sentimos um pelo outro. Eu aprendi a valorizar cada segundo, cada detalhe, cada risada, cada "oi" e até os silêncios que compartilhamos. Eu aprendi que o amor verdadeiro não se mede pela proximidade física, mas pela força com que ele pulsa dentro da gente, todos os dias.</p>
+            <p>Eu amo o fato de que, mesmo com todas as adversidades da vida, você sempre encontra a maneira de ser luz para mim. Amo como você me faz sentir especial, como você me ajuda a ser melhor a cada dia, mesmo de longe. Você me faz acreditar em um futuro ao seu lado, me faz ter esperanças nos dias que virão, mesmo sabendo que não podemos planejar nada com certeza. Porque, com você, o simples fato de esperar já se torna algo mágico.</p>
+            <p>Cada vez que penso em nós, a minha felicidade cresce mais. E é difícil acreditar que algo tão perfeito possa existir, mas você me mostrou que sim, que o amor verdadeiro é real, e ele é mais forte do que tudo. Eu não sei como explicar o tamanho da minha gratidão por ter encontrado alguém como você. Você me transforma, me dá forças, me faz ver a vida de uma forma mais bonita e cheia de significado.</p>
+            <p>A minha vida era básica antes de te conhecer, mas agora é como se ela tivesse se tornado mais colorida, mais viva, mais cheia de sonhos. Sonhos que, agora, compartilho com você. Eu vejo você em tudo ao meu redor, no brilho das estrelas, no calor do sol, no sorriso de um estranho. E cada um desses momentos me lembra o quanto sou abençoado por ter você na minha vida.</p>
+            <p>Julia, você é mais do que eu jamais sonhei. Eu te amo com cada pedaço do meu ser, mais do que você pode imaginar. E se esses dois meses foram incríveis, eu não consigo nem sonhar como serão os próximos anos, porque sei que, ao seu lado, tudo será perfeito, não importa aonde a vida nos leve.</p>
+            <p>Eu te amo profundamente, e com você, todos os meus dias ganham um significado único.</p>
+            <p>Obrigado por ser minha.</p>
+            <p>E não se esqueça de clicar logo aqui embaixo para ir para o próximo nível. Fiz uma lista com mais de 100 motivos para te amar! Espero que goste, meu amor.</p>
+        </div>
+
+        <!-- Botão para carregar o segundo HTML -->
+        <button onclick="mostrarConteudo()">Ir para o próximo nível 💜</button>
     </div>
 
-    <!-- Link para outro arquivo HTML do seu site -->
-    <button onclick="window.location.href='site.html'">Ir para o próximo nível 💜</button>
+    <!-- Iframe para carregar o segundo conteúdo -->
+    <iframe id="conteudo" src="site.html"></iframe>
+
+    <!-- Botão de Voltar -->
+    <button id="voltarButton" style="display: none;" onclick="voltarConteudo()">Voltar para a mensagem</button>
+
+    <script>
+        function toggleMusic() {
+            const audio = document.getElementById("musicPlayer");
+            if (audio.paused) {
+                audio.play();
+            } else {
+                audio.pause();
+            }
+        }
+
+        function mostrarConteudo() {
+            const iframe = document.getElementById("conteudo");
+            const conteudoPrincipal = document.getElementById("conteudoPrincipal");
+            const voltarButton = document.getElementById("voltarButton");
+
+            // Esconde o conteúdo principal
+            conteudoPrincipal.style.display = "none";
+
+            // Exibe o iframe
+            iframe.style.display = "block";
+
+            // Exibe o botão de voltar
+            voltarButton.style.display = "block";
+        }
+
+        function voltarConteudo() {
+            const iframe = document.getElementById("conteudo");
+            const conteudoPrincipal = document.getElementById("conteudoPrincipal");
+            const voltarButton = document.getElementById("voltarButton");
+
+            // Esconde o iframe
+            iframe.style.display = "none";
+
+            // Exibe o conteúdo principal novamente
+            conteudoPrincipal.style.display = "flex";
+
+            // Esconde o botão de voltar
+            voltarButton.style.display = "none";
+        }
+    </script>
 </body>
 </html>
